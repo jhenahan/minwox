@@ -1,4 +1,20 @@
 table
 {
-    width: 100%;
+    width : 100%;
+}
+
+#add-new
+{
+    float: right;
+}
+
+textarea
+{
+    height: auto;
+}
+
+textarea.code
+{
+    font-family: monospace;
+    font-size: 1.2em;
 }
