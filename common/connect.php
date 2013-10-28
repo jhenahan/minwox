@@ -1,7 +1,6 @@
 <?php
 
 include $_SERVER[ 'DOCUMENT_ROOT' ] . "/.env.php";
-require_once "functions.php";
 
 try
 {
