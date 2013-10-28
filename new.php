@@ -33,8 +33,6 @@ $none_empty = array_reduce( $form_values, function ( $a, $b )
     return !empty( $a ) && !empty( $b );
 }, true );
 
-echo $privateSnippet;
-
 if ($none_empty)
 {
     $db->beginTransaction();
