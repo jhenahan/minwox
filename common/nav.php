@@ -15,7 +15,7 @@
                     <a href="all.php">Snippets</a>
                     <ul class="dropdown">
                         <li>
-                            <a href="my.php">My Snippets</a>
+                            <a href="../my.php">My Snippets</a>
                         </li>
                         <li>
                             <a href="new.php">New Snippet</a>

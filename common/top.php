@@ -15,6 +15,7 @@ require_once "connect.php";
 
 
     <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/local.css">
 
 
     <script src="/js/vendor/custom.modernizr.js"></script>
