@@ -1,10 +1,9 @@
 <?php
-session_start();
-
 include "common/top.php";
 
 $getSamplesSql =
-    "SELECT
+    <<<SQL
+     SELECT
      `u`.`pkUsername` AS 'user',
      `sc`.`fldTitle` AS 'title',
      `l`.`fldLanguageName` AS 'lang',
@@ -21,11 +20,12 @@ $getSamplesSql =
          AND `sc`.`fkSampleLanguage` = `l`.`pkLanguageId`
      WHERE
      `u`.`fldConfirmedRegistration` <> 0
-         AND `sc`.`fldPrivate` <> 1";
+         AND `sc`.`fldPrivate` <> 1
+SQL;
 
-$stmt = $db->prepare($getSamplesSql);
+$stmt = $db->prepare( $getSamplesSql );
 $stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$rows = $stmt->fetchAll( PDO::FETCH_ASSOC );
 ?>
 <table>
     <thead>
@@ -50,14 +50,14 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <tbody>
     <?php
 
-    foreach ($rows as $row)
+    foreach ( $rows as $row )
     {
-        $user = strip_tags($row['user']);
-        $title = strip_tags($row['title']);
-        $lang = strip_tags($row['lang']);
-        $description = strip_tags($row['description']);
-        $code = strip_tags($row['code']);
-        $output =
+        $user        = strip_tags( $row[ 'user' ] );
+        $title       = strip_tags( $row[ 'title' ] );
+        $lang        = strip_tags( $row[ 'lang' ] );
+        $description = strip_tags( $row[ 'description' ] );
+        $code        = strip_tags( $row[ 'code' ] );
+        $output      =
             <<<HTML
                 <tr>
                 <td>
