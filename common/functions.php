@@ -19,3 +19,40 @@ function checkedConnection( $engine
 
     return $db;
 }
+
+function getUsername()
+{
+    if ( isset( $_SESSION[ 'username' ] ) )
+    {
+        return $_SESSION[ 'username' ];
+    }
+    else
+    {
+        return "Anonymous";
+    }
+}
+
+function getPost($field)
+{
+    if(isset($_POST[$field]))
+    {
+        return $_POST[$field];
+    }
+    else
+    {
+        return "";
+    }
+}
+
+function getLanguages(PDO $db)
+{
+    $getLanguagesSql =
+    <<<SQL
+    SELECT pkLanguageId AS id, fldLanguageName AS language
+    FROM tblLanguages
+    ORDER BY fldLanguageName
+SQL;
+    $getLanguages = $db->prepare( $getLanguagesSql );
+    $getLanguages->execute();
+    return $getLanguages->fetchAll( PDO::FETCH_ASSOC );
+}
