@@ -33,7 +33,7 @@ $none_empty = array_reduce( $form_values, function ( $a, $b )
     return !empty( $a ) && !empty( $b );
 }, true );
 
-if ($none_empty)
+if ( $none_empty )
 {
     $db->beginTransaction();
     $newSnippetSql =
@@ -46,12 +46,12 @@ if ($none_empty)
         fldTitle = :title,
         fldDescription = :description
 SQL;
-    $newSnippet = $db->prepare($newSnippetSql);
-    $newSnippet->bindValue(':lang',$language);
-    $newSnippet->bindValue(':sample',$code);
-    $newSnippet->bindValue(':privacy',$privateSnippet);
-    $newSnippet->bindValue(':title',$title);
-    $newSnippet->bindValue(':description',$description);
+    $newSnippet    = $db->prepare( $newSnippetSql );
+    $newSnippet->bindValue( ':lang', $language );
+    $newSnippet->bindValue( ':sample', $code );
+    $newSnippet->bindValue( ':privacy', $privateSnippet );
+    $newSnippet->bindValue( ':title', $title );
+    $newSnippet->bindValue( ':description', $description );
     echo $privateSnippet;
 
     $joinSql =
@@ -61,19 +61,20 @@ SQL;
         fkSampleId = :someId,
         fkUsername = :username
 SQL;
-    $join = $db->prepare($joinSql);
+    $join    = $db->prepare( $joinSql );
 
 
     try
     {
         $newSnippet->execute();
         $snippetId = $db->lastInsertId();
-        $join->bindValue(':someId',$snippetId);
-        $join->bindValue(':username',$username);
+        $join->bindValue( ':someId', $snippetId );
+        $join->bindValue( ':username', $username );
         $join->execute();
         $db->commit();
+        header( "Location: my.php" );
     }
-    catch (PDOException $e)
+    catch ( PDOException $e )
     {
         $db->rollBack();
         print "Error: " . $e->getMessage();
