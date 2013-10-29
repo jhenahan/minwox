@@ -32,11 +32,11 @@ function getUsername()
     }
 }
 
-function getPost($field)
+function getPost( $field )
 {
-    if(isset($_POST[$field]))
+    if ( isset( $_POST[ $field ] ) )
     {
-        return $_POST[$field];
+        return $_POST[ $field ];
     }
     else
     {
@@ -44,15 +44,16 @@ function getPost($field)
     }
 }
 
-function getLanguages(PDO $db)
+function getLanguages( PDO $db )
 {
     $getLanguagesSql =
-    <<<SQL
-    SELECT pkLanguageId AS id, fldLanguageName AS language
+        <<<SQL
+        SELECT pkLanguageId AS id, fldLanguageName AS language
     FROM tblLanguages
     ORDER BY fldLanguageName
 SQL;
-    $getLanguages = $db->prepare( $getLanguagesSql );
+    $getLanguages    = $db->prepare( $getLanguagesSql );
     $getLanguages->execute();
+
     return $getLanguages->fetchAll( PDO::FETCH_ASSOC );
 }
