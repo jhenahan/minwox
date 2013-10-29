@@ -2,10 +2,17 @@
 include "common/top.php";
 
 $username = getUsername();
+if ( $username == "Anonymous" )
+{
+    header( "HTTP/1.0 403 Forbidden" );
+    header( "Location: home.php" );
+    exit;
+}
 
 $getSamplesSql =
     <<<SQL
     SELECT
+     `sc`.`pkSampleId` AS 'id',
      `u`.`pkUsername` AS 'user',
      `sc`.`fldTitle` AS 'title',
      `l`.`fldLanguageName` AS 'lang',
@@ -29,36 +36,37 @@ $stmt->execute();
 $rows = $stmt->fetchAll( PDO::FETCH_ASSOC );
 ?>
 
-<table>
-    <thead>
-    <tr>
-        <th width="150">
-            Title
-        </th>
-        <th width="150">
-            Language
-        </th>
-        <th width="150">
-            Description
-        </th>
-        <th width="480">
-            Code
-        </th>
-        <th width="10"></th>
-    </tr>
-    </thead>
-    <tbody>
-<?php
+    <table>
+        <thead>
+        <tr>
+            <th width="150">
+                Title
+            </th>
+            <th width="150">
+                Language
+            </th>
+            <th width="150">
+                Description
+            </th>
+            <th width="480">
+                Code
+            </th>
+            <th width="10"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
 
-    foreach ( $rows as $row )
-    {
-        $title       = strip_tags( $row[ 'title' ] );
-        $lang        = strip_tags( $row[ 'lang' ] );
-        $description = strip_tags( $row[ 'description' ] );
-        $code        = strip_tags( $row[ 'code' ] );
-        $output      =
-            <<<HTML
-                <tr>
+        foreach ( $rows as $row )
+        {
+            $title       = htmlentities( $row[ 'title' ] );
+            $lang        = htmlentities( $row[ 'lang' ] );
+            $description = htmlentities( $row[ 'description' ] );
+            $code        = htmlentities( $row[ 'code' ] );
+            $id          = htmlentities( $row[ 'id' ] );
+            $output      =
+                <<<HTML
+                    <tr>
                 <td>
                     {$title}
                 </td>
@@ -72,18 +80,20 @@ $rows = $stmt->fetchAll( PDO::FETCH_ASSOC );
                     <pre>{$code}</pre>
                 </td>
                 <td>
-                    <span class="small button secondary">Edit</span>
+                    <a href="edit.php?id=$id" class="small button secondary">
+                        Edit
+                    </a>
                 </td>
             </tr>
 HTML;
-        echo $output;
-    }
-    ?>
-    </tbody>
-</table>
-<a href="new.php" id="add-new" class="medium button primary">
-    Add a new snippet
-</a>
+            echo $output;
+        }
+        ?>
+        </tbody>
+    </table>
+    <a href="new.php" id="add-new" class="medium button primary">
+        Add a new snippet
+    </a>
 
 
 <?php include "common/bottom.php"; ?>
