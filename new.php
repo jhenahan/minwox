@@ -72,7 +72,14 @@ SQL;
         $join->bindValue( ':username', $username );
         $join->execute();
         $db->commit();
-        header( "Location: my.php" );
+        if ( $username == "Anonymous" )
+        {
+            header( "Location: all.php" );
+        }
+        else
+        {
+            header( "Location: my.php" );
+        }
     }
     catch ( PDOException $e )
     {
@@ -81,6 +88,7 @@ SQL;
     }
 
 }
+include "common/head.php";
 ?>
 
     <h1>New Snippet</h1>

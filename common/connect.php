@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER[ 'DOCUMENT_ROOT' ] . "/.env.php";
+include ".env.php";
 
 try
 {

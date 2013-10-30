@@ -34,6 +34,7 @@ SQL;
 $stmt = $db->prepare( $getSamplesSql );
 $stmt->execute();
 $rows = $stmt->fetchAll( PDO::FETCH_ASSOC );
+include "common/head.php";
 ?>
 
     <table>

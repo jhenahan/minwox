@@ -125,6 +125,7 @@ else
     header( 'Location: home.php' );
     exit;
 }
+include "common/head.php";
 ?>
 
     <h1>Edit Snippet</h1>

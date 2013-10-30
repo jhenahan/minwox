@@ -39,7 +39,7 @@ else
     $error = "";
 }
 
-
+include "common/head.php";
 ?>
 
     <h2>Log in to Minwox</h2>

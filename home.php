@@ -1,4 +1,9 @@
-<?php include "common/top.php" ?>
+<?php 
+
+	include "common/top.php";
+	include "common/head.php";
+
+?>
 
 <section>
     <header>
@@ -11,15 +16,10 @@
     <article>
         <div class="row">
             <p class="small-6 columns">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                sit
-                aspernatur aut odit aut fugit, sed quia consequuntur magni
-                dolores
-                eos qui ratione voluptatem sequi nesciunt.
+                To view all public snippets, click "Snippets" above. You can
+                add a new snippet from the dropdown menu. Log in as user
+                test or test2 to check out "My Snippets"
+                and make some private snippets.
             </p>
 
             <p class="small-6 columns">
