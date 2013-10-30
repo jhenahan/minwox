@@ -57,3 +57,8 @@ SQL;
 
     return $getLanguages->fetchAll( PDO::FETCH_ASSOC );
 }
+
+function emailAddress($firstname, $lastname, $email)
+{
+    return "{$firstname} {$lastname} <{$email}>";
+}

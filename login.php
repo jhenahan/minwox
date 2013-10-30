@@ -10,6 +10,7 @@ if ( !empty( $_POST[ 'login' ] ) )
         SELECT pkUsername
         FROM tblUsers
         WHERE pkUsername = :input
+        AND fldConfirmedRegistration = 1
 SQL;
 
     $user = $db->prepare( $userSql );

@@ -63,14 +63,14 @@ elseif ( strtoupper( $_SERVER[ 'REQUEST_METHOD' ] ) == 'POST' )
     $privacy     = getPost( 'privacy' );
     if ( $privacy == 'public' )
     {
-        $private        = "unchecked";
+        $private        = "";
         $public         = "checked";
         $privateSnippet = false;
     }
     else
     {
         $private        = "checked";
-        $public         = "unchecked";
+        $public         = "";
         $privateSnippet = true;
     }
     $code = htmlentities( getPost( 'code' ) );
