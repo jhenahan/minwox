@@ -1,3 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/prooftechnique/minwox.png?label=ready)](https://waffle.io/prooftechnique/minwox)  
 minwox
 ======
+
+A simple (and alpha-quality) snippet manager in PHP. Written for my database class.
